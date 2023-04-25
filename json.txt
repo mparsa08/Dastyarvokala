@@ -1,0 +1,61 @@
+{
+  "id": 0,
+  "movakel": [
+    {
+      "firstname": "mamad",
+      "lastname": "mamadi",
+      "namepedar": "as",
+      "kodemeli": 12,
+      "shomareshenasname": 12,
+      "addres": ""
+    }
+  ],
+  "parvande": [
+    {
+      "shomareparvande": 11
+    },
+    {
+      "shomareshobe": 11
+    },
+    {
+      "shomarebaygani": 11
+    },
+    {
+      "namekhande": ""
+    },
+    {
+      "mozooe": ""
+    },
+    {
+      "mojtamaghazayi": ""
+    },
+    {
+      "kholaseparvande": ""
+    }
+  ],
+  "khande": [
+    {
+      "firstname": "mamad",
+      "lastname": "mamadi",
+      "namepedar": "as",
+      "kodemeli": 12,
+      "shomareshenasname": 12,
+      "addres": ""
+    }
+  ],
+  "gharardad": [
+    {
+      "shomarevekalatname": 0,
+      "tarikh": "",
+      "mablaghkol": 0,
+      "pishpardakht": 12,
+      "tozihat": ""
+    }
+  ],
+  "parvandeEjrayi": [
+    {
+      "shomareparvandeejrayi": 0,
+      "tozihat": "mamadi"
+    }
+  ]
+}
