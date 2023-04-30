@@ -4,8 +4,8 @@ import 'package:flutter_application_1/pages/loginpage/loginpage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Welcomescreen extends StatefulWidget {
-  static String routename = '/Welcomescreen';
-  Welcomescreen({super.key});
+  static String routename = '/';
+  const Welcomescreen({super.key});
 
   @override
   State<Welcomescreen> createState() => _WelcomescreenState();

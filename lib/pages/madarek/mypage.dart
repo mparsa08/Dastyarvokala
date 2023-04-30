@@ -120,10 +120,11 @@ class _MyPageState extends State<MyPage> {
                                             await Navigator.of(context).push(
                                               MaterialPageRoute(
                                                 builder: ((context) {
-                                                  return CameraExampleHome(
+                                                  return TakePictureScreen(
                                                     camera: firstCamera,
-                                                    albumname: dav![index]!
-                                                        .movakelLastname,
+                                                    albumName: dav![index]!
+                                                        .movakelLastname
+                                                        .toString(),
                                                   );
                                                 }),
                                               ),

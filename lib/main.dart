@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/pages/welcomepage/welcomepage.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'pages/HomePage/myhomepage.dart';
 import 'package:flutter/material.dart';
 import 'notification_service.dart';
@@ -24,13 +25,20 @@ class _MyMainAppState extends State<MyMainApp> {
     notificationService = NotificationService();
     listenToNotificationStream();
     notificationService.initializePlatformNotifications();
+    getadminlogin();
     super.initState();
+  }
+
+  getadminlogin() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    MyHomePage.adminLogin2 = prefs.getBool('active') ?? false;
+    print(MyHomePage.adminLogin2);
   }
 
   void listenToNotificationStream() =>
       notificationService.behaviorSubject.listen((payload) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => MyHomePage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const Welcomescreen()));
       });
 
   @override

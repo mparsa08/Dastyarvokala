@@ -7,9 +7,10 @@ import 'body.dart';
 import 'help.dart';
 
 class MyHomePage extends StatefulWidget {
-  static String routename = '/';
+  static String routename = '/MyHomePage';
   static int selectedIndex = 1;
-  String? adminLogin;
+  bool isloading = false;
+
   static bool? adminLogin2;
   MyHomePage({super.key});
 
@@ -38,9 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     ),
-    BodyOne(
-      adminLogin: MyHomePage.adminLogin2!,
-    ),
+    BodyOne(),
     const Helper(),
   ];
   void changeOntap(index) {
@@ -52,18 +51,24 @@ class _MyHomePageState extends State<MyHomePage> {
   checkadminlogin() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     MyHomePage.adminLogin2 = prefs.getBool('active') ?? false;
-    print(MyHomePage.adminLogin2);
+    print('adminLogin2 : ${MyHomePage.adminLogin2}');
   }
 
-  checkactive() async {
+  signout() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('active', false);
   }
 
   @override
   void initState() {
-    super.initState();
+    setState(() {
+      widget.isloading = true;
+    });
+    setState(() {
+      widget.isloading = false;
+    });
     checkadminlogin();
+    super.initState();
   }
 
   @override
@@ -140,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 setState(() {
                   final navigator = Navigator.of(context);
-                  checkactive();
+                  signout();
                   navigator.pushAndRemoveUntil(
                       MaterialPageRoute(
                           builder: (context) => const Loginpage()),

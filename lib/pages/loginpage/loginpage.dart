@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/HomePage/myhomepage.dart';
-import '../welcomepage/welcomepage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Loginpage extends StatefulWidget {
@@ -47,8 +46,13 @@ class _LoginpageState extends State<Loginpage> {
   static final forgotpass_email_formGlobalKey = GlobalKey<FormState>();
   static final forgotpass_password_formGlobalKey = GlobalKey<FormState>();
 
-  static late bool successLogin;
   int signuporforgotcounter = 0;
+
+  checkadminlogin() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    MyHomePage.adminLogin2 = prefs.getBool('active') ?? false;
+    print(MyHomePage.adminLogin2);
+  }
 
   saveuserdata(
       String username, String password, String? realname, String? email) async {
@@ -82,11 +86,19 @@ class _LoginpageState extends State<Loginpage> {
     final password = prefs.getString('password');
     if (entered_password == password && entered_username == username) {
       setState(() {
+        MyHomePage().isloading = true;
+      });
+      setState(() {
+        MyHomePage().isloading = false;
+      });
+      setState(() {
         setactive();
+
         ScaffoldMessenger.of(context)
             .showSnackBar(const SnackBar(content: Text('ورود موفقیت آمیز')));
-
-        successLogin = true;
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => MyHomePage()),
+            (route) => false);
       });
     } else {
       setState(() {
@@ -97,7 +109,6 @@ class _LoginpageState extends State<Loginpage> {
             ),
           ),
         );
-        successLogin = false;
       });
     }
   }
@@ -105,16 +116,24 @@ class _LoginpageState extends State<Loginpage> {
   setactive() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('active', true);
+    await checkadminlogin();
   }
 
   setadective() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('active', false);
+    await checkadminlogin();
   }
 
   setpassword(String entered_password) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('password', entered_password);
+  }
+
+  @override
+  void initState() {
+    checkadminlogin();
+    super.initState();
   }
 
   @override
@@ -606,11 +625,6 @@ class _LoginpageState extends State<Loginpage> {
                 onPressed: () {
                   checkuserdata(vakiluserEditingController.text,
                       vakilpassEditingController.text);
-                  if (successLogin) {
-                    Navigator.of(context).pushAndRemoveUntil(
-                        MaterialPageRoute(builder: (context) => MyHomePage()),
-                        (route) => false);
-                  }
                 },
                 child: const Text('ورود'),
               ),

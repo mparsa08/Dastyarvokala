@@ -2,6 +2,7 @@
 
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/HomePage/myhomepage.dart';
 import 'package:flutter_application_1/pages/barnamehaftegi/barnamehaftegi.dart';
 import 'package:flutter_application_1/pages/etelatkhande/etelatkhande.dart';
 import 'package:flutter_application_1/pages/etelatmovakelin/etelatmovakelin.dart';
@@ -10,8 +11,9 @@ import 'package:flutter_application_1/pages/parvandeha/parvandeha.dart';
 import '../sabtparvande/sabtparvande.dart';
 
 class BodyOne extends StatefulWidget {
-  bool adminLogin;
-  BodyOne({super.key, required this.adminLogin});
+  BodyOne({
+    super.key,
+  });
 
   @override
   State<BodyOne> createState() => _BodyOneState();
@@ -20,7 +22,6 @@ class BodyOne extends StatefulWidget {
 class _BodyOneState extends State<BodyOne> {
   @override
   void initState() {
-    print('adminlogin_body:${widget.adminLogin}');
     super.initState();
   }
 
@@ -60,18 +61,18 @@ class _BodyOneState extends State<BodyOne> {
                         title: "ساخت پرونده",
                         pic: 'assets/image/SakhtParvande.png'),
                     CreatContainer(
-                        valid: !widget.adminLogin,
+                        valid: MyHomePage.adminLogin2!,
                         titleId: 2,
                         title: "پرونده ها",
                         pic: 'assets/image/Parvandeha.png'),
                     CreatContainer(
-                        valid: !widget.adminLogin,
+                        valid: MyHomePage.adminLogin2!,
                         titleId: 3,
                         font: 15,
                         title: "اطلاعات موکلین",
                         pic: 'assets/image/movakel.png'),
                     CreatContainer(
-                        valid: !widget.adminLogin,
+                        valid: MyHomePage.adminLogin2!,
                         titleId: 4,
                         font: 15,
                         title: "اطلاعات خوانده ها ",
