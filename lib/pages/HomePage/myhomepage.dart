@@ -8,7 +8,7 @@ import 'help.dart';
 
 class MyHomePage extends StatefulWidget {
   static String routename = '/MyHomePage';
-  static int selectedIndex = 1;
+  static int selectedIndex = 0;
   bool isloading = false;
 
   static bool? adminLogin2;
