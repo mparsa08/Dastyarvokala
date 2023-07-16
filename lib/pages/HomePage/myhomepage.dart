@@ -8,7 +8,7 @@ import 'help.dart';
 
 class MyHomePage extends StatefulWidget {
   static String routename = '/MyHomePage';
-  static int selectedIndex = 0;
+  static int selectedIndex = 2;
   bool isloading = false;
 
   static bool? adminLogin2;
@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
   signout() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('active', false);
+  }
+
+  @override
+  void dispose() {
+    MyHomePage.selectedIndex = 2;
+    super.dispose();
   }
 
   @override
@@ -152,9 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       (route) => false);
                 });
               },
-              leading: const Icon(Icons.account_circle_sharp),
+              leading: const Icon(Icons.logout),
               title: const Text(
-                "کاربر",
+                "خروج",
                 textAlign: TextAlign.right,
               ),
               minVerticalPadding: 5,

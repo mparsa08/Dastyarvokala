@@ -35,7 +35,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  http: ^0.13.5
   sqflite: ^2.2.2
   path: ^1.8.2
   persian_modal_date_picker: ^0.0.3
@@ -47,10 +46,8 @@ dependencies:
   camera: ^0.10.2+1
   video_player: ^2.5.1
   gallery_saver: ^2.3.2
-  supabase_flutter: ^1.4.1
   shared_preferences: ^2.0.18
-
-  # awesome_notifications: ^0.7.1
+  persian_datetime_picker: ^2.6.0
 
 dev_dependencies:
   flutter_test:
